@@ -165,9 +165,7 @@ div.p-tabmenu.p-component{
 
 .centerVerticallyHome {
   position: relative;
-  top: 50%;
   display: inline-block;
-  transform: translateY(-50%);
 }
 .background-home {
   width: 200%;
