@@ -1,15 +1,15 @@
-import './Logo.css';
+import styles from './Logo.module.css';
 
 const Logo = ({ style, textStyle, imageStyle = 'black' }:any) => (
-    <div className="div-center" style={style}>
+    <div className={styles["div-center"]} style={style}>
         {imageStyle === 'black' ? 
-            <div className="logo-black"></div>
+            <div className={styles["logo-black"]}></div>
             : imageStyle === 'blue' ? 
-                <div className="logo-blue"></div>
+                <div className={styles["logo-blue"]}></div>
                 :
-                <div className="logo-white"></div>
+                <div className={styles["logo-white"]}></div>
         }
-        <p style={textStyle} className={imageStyle === 'white' ? "text-logo" : "text-logo-black"}><strong>E-Learning <span>Courses</span></strong></p>
+        <p style={textStyle} className={imageStyle === 'white' ? styles["text-logo"] : styles["text-logo-black"]}><strong>E-Learning <span className={styles.span}>Courses</span></strong></p>
     </div>
 );
 
