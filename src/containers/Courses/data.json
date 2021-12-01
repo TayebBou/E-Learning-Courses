@@ -1,0 +1,28 @@
+{
+    "courses": [
+        {
+            "moduleName": "web",
+            "minutes": 90,
+            "hexColor": "#3d3fd9",
+            "matter": "React"
+        },
+        {
+            "moduleName": "web",
+            "minutes": 90,
+            "hexColor": "#ab1313",
+            "matter": "Angular"
+        },
+        {
+            "moduleName": "mobile",
+            "minutes": 60,
+            "hexColor": "#1ec9c9",
+            "matter": "React Native"
+        },
+        {
+            "moduleName": "mobile",
+            "minutes": 30,
+            "hexColor": "#2cc743",
+            "matter": "Flutter"
+        }
+    ]
+}
