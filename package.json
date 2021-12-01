@@ -1,7 +1,7 @@
 {
   "name": "e-learning-courses",
   "author": "Tayeb BOUSFIHA",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "E-Learning Information System for professors to start virtual meeting and courses with React JS / TypeScript / JSON / Material UI / Prime React / ESLint / CSS / Jitsi Meet External API.",
   "private": true,
   "license": "Tayeb BOUSFIHA",
