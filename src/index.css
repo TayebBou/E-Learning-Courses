@@ -221,3 +221,14 @@ div.p-tabmenu.p-component{
 .p-button.p-component.button-home-second:focus {
   box-shadow: 0 0 0 0.2rem #90c3eb;
   }
+
+.p-progress-spinner {
+  top: 50%;
+  display: flex !important;
+  transform: translateY(-50%);
+  height: calc(100vh - 242px) !important;
+}
+  
+.p-progress-spinner-circle {
+  stroke: #2747b1 !important;
+}

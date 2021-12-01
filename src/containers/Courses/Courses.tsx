@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import './Courses.css';
+import styles from './Courses.module.css';
 import {
     Button,
     Card,
@@ -69,11 +69,11 @@ const Courses = (props : any) => {
         }
 
         return (
-            <Card key={uuidv4()} elevation={1} className="card-style">
-                <div style={{ background: i.hexColor, color: getContrastYIQ(i.hexColor) }} className="card-header">
+            <Card key={uuidv4()} elevation={1} className={styles["card-style"]}>
+                <div style={{ background: i.hexColor, color: getContrastYIQ(i.hexColor) }} className={styles["card-header"]}>
                     <Typography color="inherit">{i.moduleName}</Typography>
                     <div >
-                        <i className="pi pi-clock" style={{ fontSize: '0.83em', paddingRight: '0.5em'}}></i>
+                        <i className={styles["pi pi-clock"]} style={{ fontSize: '0.83em', paddingRight: '0.5em'}}></i>
                         <span>{i.minutes} min</span>
                     </div>
                 </div>
@@ -140,9 +140,9 @@ const Courses = (props : any) => {
 
     return (
         <React.Fragment>
-            <div className="courses-header" >
-                <h2 className="centerVertically courses-header-title">Here are the videoconference courses assigned to you</h2>
-                <ul className="circles">
+            <div className={styles["courses-header"]} >
+                <h2 className={`${styles["centerVertically"]} ${styles["courses-header-title"]}`}>Here are the videoconference courses assigned to you</h2>
+                <ul className={styles["circles"]}>
                         <li></li>
                         <li></li>
                         <li></li>
@@ -165,10 +165,10 @@ const Courses = (props : any) => {
                 </ul>
             </div >
             { data.courses.length === 0 ? 
-            <h2 className="no-data-text">There is no course available right now.</h2>
+            <h2 className={styles["no-data-text"]}>There is no course available right now.</h2>
             :
-            <div className="courses-content">
-                <div className="courses-content-header">
+            <div className={styles["courses-content"]}>
+                <div className={styles["courses-content-header"]}>
                     <TextField
                         label="Find a matter"
                         placeholder="Enter a keyword..."

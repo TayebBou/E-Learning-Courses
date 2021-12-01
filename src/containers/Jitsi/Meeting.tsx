@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 
 import { ProgressSpinner } from 'primereact/progressspinner';
 import { Dialog } from 'primereact/dialog';
-import './Meeting.css';
+import styles from './Meeting.module.css';
 
 
 declare global {
@@ -75,7 +75,7 @@ const Meeting = () => {
             <div
             id="jitsi-container"
             style={{ display: (loading ? 'none' : 'block') }}
-            className="meeting-container"
+            className={styles["meeting-container"]}
             />
         </React.Fragment>
     )
