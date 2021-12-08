@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { toolbarActions } from '../../../config/stateSlices/toolbarSlice';
 import Logo from '../../../components/Logo/Logo';
 import { TabMenu } from 'primereact/tabmenu';
 import { Sidebar } from 'primereact/sidebar';
@@ -7,17 +9,18 @@ import { withRouter } from 'react-router-dom';
 
 const Toolbar = (props : any) => {
 
-    const [isMedium, setIsMedium] = useState(false);
-    const [visibleLeft, setVisibleLeft] = useState(false);
+    const dispatch = useDispatch();
+    const isMedium = useSelector((state:any) => state.toolbar.isMedium);
+    const visibleLeft = useSelector((state:any) => state.toolbar.visibleLeft);
     let isWidthMedium = window.innerWidth < 900 ? true : false;
  
     //choose the screen size 
     const handleResize = () => {
     if (window.innerWidth < 900) {
-        setIsMedium(true)
+        dispatch(toolbarActions.isMedium(true));
     } else {
-        setIsMedium(false)
-        setVisibleLeft(false)
+        dispatch(toolbarActions.isMedium(false));
+        dispatch(toolbarActions.visibleLeft(false));
     }
     isWidthMedium = isMedium;
     }
@@ -35,17 +38,17 @@ const Toolbar = (props : any) => {
 
     return (
         <React.Fragment>
-            <Sidebar visible={visibleLeft} baseZIndex={1000000} onHide={() => setVisibleLeft(false)}>
+            <Sidebar visible={visibleLeft} baseZIndex={1000000} onHide={() => dispatch(toolbarActions.visibleLeft(false))}>
                 <Logo imageStyle="blue" textStyle={{ color: '#7373a3'}} style={{ position: 'relative', marginBottom: '3em', marginTop: '2em' }} />
-                <Button style={{ width: '100%', marginBottom: '1em' }} onClick={() => {props.history.push("/home"); setVisibleLeft(false)}} label="Home" className="p-button-danger p-button-text sidebar-button" icon='pi pi-fw pi-home sidebar-icon' />
-                <Button style={{ width: '100%', marginBottom: '1em' }} onClick={() => {props.history.push("/courses"); setVisibleLeft(false)}} label="Courses" className="p-button-danger p-button-text sidebar-button" icon='pi pi-fw pi-calendar sidebar-icon' />
+                <Button style={{ width: '100%', marginBottom: '1em' }} onClick={() => {props.history.push("/home"); dispatch(toolbarActions.visibleLeft(false))}} label="Home" className="p-button-danger p-button-text sidebar-button" icon='pi pi-fw pi-home sidebar-icon' />
+                <Button style={{ width: '100%', marginBottom: '1em' }} onClick={() => {props.history.push("/courses"); dispatch(toolbarActions.visibleLeft(false))}} label="Courses" className="p-button-danger p-button-text sidebar-button" icon='pi pi-fw pi-calendar sidebar-icon' />
             </Sidebar>
             <header className="Toolbar">
                 <Logo imageStyle="white" />
                 { !isWidthMedium ? 
                 <TabMenu model={items} />
                 : 
-                <Button icon="pi pi-bars big" onClick={() => setVisibleLeft(true)} className="p-mr-2 burger-button" /> }
+                <Button icon="pi pi-bars big" onClick={() => dispatch(toolbarActions.visibleLeft(true))} className="p-mr-2 burger-button" /> }
             </header>
         </React.Fragment>
 )};
