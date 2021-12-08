@@ -2,7 +2,7 @@
 
 # LIVE HERE : https://e-learning-courses-pro-1.web.app/
 
-This project is an E-Learning Information System for professors to start virtual meeting and courses with React JS / TypeScript / JSON / Material UI / Prime React / ESLint / CSS / Jitsi Meet External API.
+This project is an E-Learning Information System for professors to start virtual meeting and courses with React JS / TypeScript / Redux Toolkit / JSON / Material UI / Prime React / ESLint / CSS / Jitsi Meet External API.
 
 All screen size are handled except for extra small screen size.
 I put some data in a JSON file to make the app reactive to data and make it a dynamic application instead of a satic one.
