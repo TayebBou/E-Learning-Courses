@@ -1,5 +1,6 @@
-
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { coursesActions } from '../../config/stateSlices/coursesSlice';
 import styles from './Courses.module.css';
 import {
     Button,
@@ -23,9 +24,10 @@ import data from './data.json';
 
 const Courses = (props : any) => {
 
-    const [searchText, setSearchText] = useState('');
-    const [selectedModule, setSelectedModule] = useState<string>('all');
-    const [dataFiltred, setdataFiltred] = useState(data.courses);
+    const dispatch = useDispatch();
+    const searchText:any = useSelector((state:any) => state.courses.searchText);
+    const selectedModule = useSelector((state:any) => state.courses.selectedModule);
+    const dataFiltred = useSelector((state:any) => state.courses.dataFiltred);
 
     const theme = unstable_createMuiStrictModeTheme();
 
@@ -103,35 +105,35 @@ const Courses = (props : any) => {
     const handleSearchText = (event : any) => {
         if (event.target.value === '') {
             if (selectedModule === 'all') {
-                setdataFiltred(data.courses);
+                dispatch(coursesActions.dataFiltred(data.courses));
             } else {
-                setdataFiltred(data.courses.filter(({moduleName}): any => moduleName === selectedModule));
+                dispatch(coursesActions.dataFiltred(data.courses.filter(({moduleName}): any => moduleName === selectedModule)));
             }
         } else {
             if (selectedModule === 'all') {
-                setdataFiltred(data.courses.filter(({matter}): any => matter.toLowerCase().startsWith(event.target.value.toLowerCase())));
+                dispatch(coursesActions.dataFiltred(data.courses.filter(({matter}): any => matter.toLowerCase().startsWith(event.target.value.toLowerCase()))));
             } else {
-                setdataFiltred(data.courses.filter(({moduleName, matter}): any => moduleName === selectedModule && matter.toLowerCase().startsWith(event.target.value.toLowerCase())));
+                dispatch(coursesActions.dataFiltred(data.courses.filter(({moduleName, matter}): any => moduleName === selectedModule && matter.toLowerCase().startsWith(event.target.value.toLowerCase()))));
             }
         }
-        setSearchText(event.target.value);
+        dispatch(coursesActions.searchText(event.target.value));
     }
 
     const handleSelectedModule = (event : any) => {
         if (event.target.value === 'all') {
             if (searchText === '') {
-                setdataFiltred(data.courses);
+                dispatch(coursesActions.dataFiltred(data.courses));
             } else {
-                setdataFiltred(data.courses.filter(({matter}): any => matter.toLowerCase().startsWith(searchText.toLowerCase())));
+                dispatch(coursesActions.dataFiltred(data.courses.filter(({matter}): any => matter.toLowerCase().startsWith(searchText.toLowerCase()))));
             }
         } else {
             if (searchText === '') {
-                setdataFiltred(data.courses.filter(({moduleName}): any => moduleName === event.target.value));
+                dispatch(coursesActions.dataFiltred(data.courses.filter(({moduleName}): any => moduleName === event.target.value)));
             } else {
-                setdataFiltred(data.courses.filter(({moduleName, matter}): any => moduleName === event.target.value && matter.toLowerCase().startsWith(searchText.toLowerCase())));
+                dispatch(coursesActions.dataFiltred(data.courses.filter(({moduleName, matter}): any => moduleName === event.target.value && matter.toLowerCase().startsWith(searchText.toLowerCase()))));
             }
         }
-        setSelectedModule(event.target.value);
+        dispatch(coursesActions.selectedModule(event.target.value));
     }
 
     const handleStartCourse = () => {

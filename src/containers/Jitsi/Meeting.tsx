@@ -1,4 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { jitsiActions } from '../../config/stateSlices/jitsiSlice';
 
 import { ProgressSpinner } from 'primereact/progressspinner';
 import { Dialog } from 'primereact/dialog';
@@ -13,14 +15,15 @@ declare global {
 
 const Meeting = () => {
 
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<any>(null);
+    const dispatch = useDispatch();
+    const loading = useSelector((state:any) => state.jitsi.loading);
+    const error = useSelector((state:any) => state.jitsi.error);
 
     const onHide = () => {
-        setError(null);
+        dispatch(jitsiActions.error(null));
     }
   
-    const startConference = () => {
+    const startConference = useCallback(() => {
         try {
             const domain = 'meet.jit.si';
             const options = {
@@ -43,21 +46,21 @@ const Meeting = () => {
             });
             api.addEventListener('videoConferenceJoined', () => {
                 console.log('Local User Joined');
-                setLoading(false);
+                dispatch(jitsiActions.loading());
                 api.executeCommand('displayName', 'Professor Name');
                 api.executeCommand('password', "0000");
             });
         } catch (error) {
             console.error('Failed to load Jitsi API', error);
-            setError('Failed to load Jitsi API');
+            dispatch(jitsiActions.error('Failed to load Jitsi API'));
         }
-    }
+    }, [dispatch])
 
     useEffect(() => {
         // verify the JitsiMeetExternalAPI constructor is added to the global..
         if (window.JitsiMeetExternalAPI) startConference();
-        else setError('Jitsi Meet API script not loaded');
-    }, []);
+        else dispatch(jitsiActions.error('Jitsi Meet API script not loaded'));
+    }, [dispatch, startConference]);
   
     return (
         <React.Fragment>
