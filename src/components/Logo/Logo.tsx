@@ -1,6 +1,13 @@
+import { FC } from 'react';
 import styles from './Logo.module.css';
 
-const Logo = ({ style, textStyle, imageStyle = 'black' }:any) => (
+type LogoProps = {
+    style?: {}, 
+    textStyle?: {}, 
+    imageStyle: string
+}
+
+const Logo: FC<LogoProps> = ({ style, textStyle, imageStyle = 'black' }) => (
     <div className={styles["div-center"]} style={style}>
         {imageStyle === 'black' ? 
             <div className={styles["logo-black"]}></div>

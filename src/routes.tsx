@@ -1,14 +1,14 @@
-import React, { Suspense } from 'react'
+import React, { FC, Suspense } from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import Home from './components/Home/Home'
-import { ProgressSpinner } from 'primereact/progressspinner';
+import { ProgressSpinner } from 'primereact/progressspinner'
 import PageNotFound from './components/error/PageNotFound/PageNotFound'
 
 const Courses = React.lazy(() => import('./containers/Courses/Courses'))
 const Meeting = React.lazy(() => import('./containers/Jitsi/Meeting'))
 
-const Routes = () => (
-  <Suspense fallback={<ProgressSpinner/>}>
+const Routes: FC = () => (
+  <Suspense fallback={<ProgressSpinner />}>
     <Switch>
       <Route path="/home" component={Home} exact />
       <Route path="/courses" component={Courses} exact />
