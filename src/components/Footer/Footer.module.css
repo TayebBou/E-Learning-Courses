@@ -1,13 +1,13 @@
 .footer-class {
-    margin-top: auto;
-    min-height: 170px;
-    position: relative;
-    background-color: #043c82;
+  margin-top: auto;
+  min-height: 170px;
+  position: relative;
+  background-color: #043c82;
 }
 .footer-text {
-    color: white;
-    text-align: center;
-    top: 10em;
-    font-size: small;
-    position: relative;
+  color: white;
+  text-align: center;
+  top: 10em;
+  font-size: small;
+  position: relative;
 }
