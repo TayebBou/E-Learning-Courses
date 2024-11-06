@@ -51,8 +51,8 @@ const Courses: FC<RouteComponentProps> = (props) => {
       if (selectedModule === Module.ALL) {
         dispatch(
           coursesActions.dataFiltred(
-            data.courses.filter(({ matter }) =>
-              matter.toLowerCase().startsWith(event.target.value.toLowerCase()),
+            data.courses.filter(({ courseName }) =>
+              courseName.toLowerCase().startsWith(event.target.value.toLowerCase()),
             ),
           ),
         )
@@ -60,9 +60,9 @@ const Courses: FC<RouteComponentProps> = (props) => {
         dispatch(
           coursesActions.dataFiltred(
             data.courses.filter(
-              ({ moduleName, matter }) =>
+              ({ moduleName, courseName }) =>
                 moduleName === selectedModule &&
-                matter
+                courseName
                   .toLowerCase()
                   .startsWith(event.target.value.toLowerCase()),
             ),
@@ -85,8 +85,8 @@ const Courses: FC<RouteComponentProps> = (props) => {
       } else {
         dispatch(
           coursesActions.dataFiltred(
-            data.courses.filter(({ matter }) =>
-              matter.toLowerCase().startsWith(searchText.toLowerCase()),
+            data.courses.filter(({ courseName }) =>
+              courseName.toLowerCase().startsWith(searchText.toLowerCase()),
             ),
           ),
         )
@@ -104,9 +104,9 @@ const Courses: FC<RouteComponentProps> = (props) => {
         dispatch(
           coursesActions.dataFiltred(
             data.courses.filter(
-              ({ moduleName, matter }) =>
+              ({ moduleName, courseName }) =>
                 moduleName === event.target.value &&
-                matter.toLowerCase().startsWith(searchText.toLowerCase()),
+                courseName.toLowerCase().startsWith(searchText.toLowerCase()),
             ),
           ),
         )
@@ -115,7 +115,8 @@ const Courses: FC<RouteComponentProps> = (props) => {
     dispatch(coursesActions.selectedModule(event.target.value))
   }
 
-  const handleStartCourse = () => {
+  const handleStartCourse = (courseName : string) => {
+    dispatch(coursesActions.selectedCourse(courseName))
     props.history.push('/meeting')
   }
 
@@ -157,7 +158,7 @@ const Courses: FC<RouteComponentProps> = (props) => {
         <div className={styles['courses-content']}>
           <div className={styles['courses-content-header']}>
             <TextField
-              label="Find a matter"
+              label="Find a courseName"
               placeholder="Enter a keyword..."
               value={searchText}
               inputProps={{

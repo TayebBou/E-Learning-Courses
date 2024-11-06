@@ -6,6 +6,7 @@ import { Module } from '../../shared/models/module.model'
 const initialCoursesState: ICoursesStates = {
   searchText: '',
   selectedModule: Module.ALL,
+  selectedCourse: '',
   dataFiltred: data.courses,
 }
 
@@ -18,6 +19,9 @@ const coursesSlice = createSlice({
     },
     selectedModule(state: ICoursesStates, action) {
       state.selectedModule = action.payload
+    },
+    selectedCourse(state: ICoursesStates, action) {
+      state.selectedCourse = action.payload
     },
     dataFiltred(state: ICoursesStates, action) {
       state.dataFiltred = action.payload

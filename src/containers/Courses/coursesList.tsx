@@ -12,7 +12,7 @@ import styles from './Courses.module.css'
 import data from './data.json'
 
 
-export const getCoursesList = (dataFiltred: dataFiltred[], handleStartCourse: Function) => {
+export const getCoursesList = (dataFiltred: dataFiltred[], handleStartCourse: (courseName: string) => void) => {
   
     return dataFiltred.map((i, j) => {
 
@@ -66,7 +66,7 @@ export const getCoursesList = (dataFiltred: dataFiltred[], handleStartCourse: Fu
           </div>
         </div>
         <CardContent style={{ textAlign: 'center' }}>
-          <Typography style={{ fontSize: '1.4rem' }}>{i.matter}</Typography>
+          <Typography style={{ fontSize: '1.4rem' }}>{i.courseName}</Typography>
           <Typography color="textSecondary" style={{ fontSize: '0.9rem' }}>
             {d.getHours() +
               'h' +
@@ -83,7 +83,7 @@ export const getCoursesList = (dataFiltred: dataFiltred[], handleStartCourse: Fu
         <CardActions style={{ padding: 0 }}>
           <Button
             disabled={disabledCourse}
-            onClick={() => (disabledCourse ? null : handleStartCourse())}
+            onClick={() => (disabledCourse ? null : handleStartCourse(i.courseName))}
             color="primary"
             style={{ width: '100%', padding: '1em' }}
           >

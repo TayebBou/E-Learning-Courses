@@ -1,14 +1,18 @@
-import styles from './Layout.module.css'
-import { FC } from 'react'
-import Toolbar from '../../containers/Navigation/Toolbar/Toolbar'
-import Footer from '../../components/Footer/Footer'
+import styles from "./Layout.module.css";
+import { FC, ReactNode } from "react";
+import Toolbar from "../../containers/Navigation/Toolbar/Toolbar";
+import Footer from "../../components/Footer/Footer";
 
-const layout: FC = (props) => (
+type LayoutProps = {
+  children: ReactNode;
+};
+
+const layout: FC<LayoutProps> = ({ children }) => (
   <>
     <Toolbar />
-    <main className={styles['Content']}>{props.children}</main>
+    <main className={styles["Content"]}>{children}</main>
     <Footer />
   </>
-)
+);
 
-export default layout
+export default layout;

@@ -5,28 +5,28 @@
       "moduleName": "web",
       "minutes": 90,
       "hexColor": "#3d3fd9",
-      "matter": "React"
+      "courseName": "React"
     },
     {
       "id": 2,
       "moduleName": "web",
       "minutes": 90,
       "hexColor": "#ab1313",
-      "matter": "Angular"
+      "courseName": "Angular"
     },
     {
       "id": 3,
       "moduleName": "mobile",
       "minutes": 60,
       "hexColor": "#1ec9c9",
-      "matter": "React Native"
+      "courseName": "React Native"
     },
     {
       "id": 4,
       "moduleName": "mobile",
       "minutes": 30,
       "hexColor": "#2cc743",
-      "matter": "Flutter"
+      "courseName": "Flutter"
     }
   ],
   "monthNames": [
