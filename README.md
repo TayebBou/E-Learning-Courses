@@ -2,14 +2,14 @@
 
 # LIVE HERE : https://e-learning-courses-pro-1.web.app/
 
-This project is an E-Learning Information System for professors to start virtual meeting and courses with React JS / TypeScript / Redux Toolkit / JSON / Material UI / Prime React / ESLint / CSS / Jitsi Meet External API.
+This project is an E-Learning Information System for professors to start virtual meeting and courses with React JS / TypeScript / Jitsi React SDK / Redux Toolkit / Prime React / Material UI / CSS / ESLint.
 
 All screen size are handled except for extra small screen size.
 I put some data in a JSON file to make the app reactive to data and make it a dynamic application instead of a satic one.
 I used the best react practices to develop the E-Learning Courses app.
 For the deployement I built the project with the `yarn build` commande and I deployed with Firebase, here the documentation for hosting and deploying your app in Firebase : https://firebase.google.com/docs/hosting/quickstart.
 
-Jitsi Meet is an alternative for ZOOM or GOOGLE MEET... It's an application used to start online meetings I used the hosted one and here is the documentation for Jitsi Meet External API : https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-iframe
+Jitsi Meet is an alternative for ZOOM or GOOGLE MEET... It's an application used to start online meetings I used the hosted one and here is the documentation for Jitsi React SDK : https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-react-sdk
 And the Jitsi Meet API Github : https://github.com/jitsi/jitsi-meet.
 
 ![ezgif-1-caff1f111feb](https://user-images.githubusercontent.com/52780772/117583264-c267f100-b0f5-11eb-8785-4cab6332daff.gif)
@@ -42,7 +42,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### You can start using the application with all its features :)
+### You can start using the application with all its features
 
 ![home](https://user-images.githubusercontent.com/52780772/117581088-9135f380-b0ea-11eb-9c77-117c70be14f9.png)
 
